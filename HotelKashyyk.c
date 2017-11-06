@@ -19,6 +19,7 @@
 
 #define true 1
 #define false 0
+#define notFalse 0
 
 //Structure to store guests
 struct guests {
@@ -90,7 +91,7 @@ void checkIn (){
 	//If nothing is found print failure and break
 	if (locFree == -1)
 	{
-		printf("No booking places found");
+		printf("No places free");
 		fclose(fp);
 		break;
 	}
@@ -146,17 +147,17 @@ void checkIn (){
 	fgets(boardType, 5, stdin);
 	fflush(stdin);
 
-	if (strcmp(boardType, "B&B"))
+	if (strcmp(boardType, "B&B") == notFalse)
 	{
 		guestStruct.bType = 0;
 	}
 
-	if (strcmp(boardType, "Half"))
+	if (strcmp(boardType, "Half") == notFalse)
 	{
 		guestStruct.bType = 1;
 	}
 
-	if (strcmp(boardType, "Full"))
+	if (strcmp(boardType, "Full") == notFalse)
 	{
 		guestStruct.bType = 2;
 	}
@@ -170,12 +171,12 @@ void checkIn (){
 	fgets(boardType, 5, stdin);
 	fflush(stdin);
 
-	if (strcmp(boardType, "Yes"))
+	if (strcmp(boardType, "Yes") == notFalse)
 	{
 		guestStruct.newspaper = true;
 	}
 
-	if (strcmp(boardType, "No"))
+	if (strcmp(boardType, "No") == notFalse)
 	{
 		guestStruct.newspaper = false;
 	}
