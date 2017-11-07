@@ -51,7 +51,12 @@ struct guests {
 FILE *fp;
 FILE *fp2;
 
-int main()
+//Initalise functions
+void checkIn ();
+void dining ();
+void checkOut ();
+
+int main ()
 {
 	srand(time(0));
 	return 0;
