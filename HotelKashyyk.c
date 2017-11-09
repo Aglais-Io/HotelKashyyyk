@@ -37,8 +37,8 @@ struct guests {
 	char adultNum = 0;
 	char childNum = 0;
 
-	//Board Type (0-BB;1-1/2 Board;2-Board)
-	char bType;
+	//Board Type (0-BB;1- 1/2 Board;2- Full Board)
+	char bType;//Shouldn't this be int?
 
 	//Length of stay
 	int lenStay = 0;
@@ -206,7 +206,109 @@ void checkIn (){
 }
 
 void dining (){
-
+	
+	int ID[10];
+	printf("Input booking ID:");
+	scanf("%d",ID);
+	//CHECK FOR EXISTING USER
+	//IF EXISTING USER------
+	
+	
+	//tables- 1 = in use, 0 = available
+	int tables7[10];int tables9[10];
+	//Endor = table 1
+	tables7[0]=0;tables9[0]=0;
+	//Naboo = table 2
+	tables7[1]=0;tables9[1]=0;
+	//Tatooine = table 3
+	tables7[2]=0;tables9[2]=0;
+	int time;
+	printf("Would you like to book a table for 7pm or 9pm?\nInput 7 for 7pm\nInput 9 for 9pm\n");
+	scanf("%d",&time);
+	if(time==7)
+	{
+		if((bType==1)||(bType==2)&&((tables7[0]==0)||(tables7[1]==0)||(tables7[2]==0)))
+		{
+			printf("Please select a table to dine at from.\n");
+			if(tables7[0]==0)
+			{
+				printf("(1)Endor Table \n");	
+			}
+			if(tables7[1]==0)
+			{
+				printf("(2)Naboo Table\n");
+			}
+			if(tables7[2]==0)
+			{
+				printf("(3)Tatooine Table\n");
+			}
+			printf(":");
+			int T;
+			scanf("%d",&T);
+			
+			switch(T)
+			{
+				case 1:
+					printf("Endor table has been booked for your party for 7pm\n");
+					tables7[0]==1;
+					break;
+				case 2:
+					printf("Naboo table has been booked for your party for 7pm\n");
+					tables7[1]==1;
+					
+					break;
+				case 3:
+					printf("Tatooine table has been booked for your party for 7pm\n");
+					tables7[2]==1;
+					break;
+				default:
+					printf("Error");
+			}
+		}
+	}
+	else if(time==9)
+	{
+		
+		if((bType==1)||(bType==2)&&((tables9[0]==0)||(tables9[1]==0)||(tables9[2]==0)))
+		{
+			printf("Please select a table to dine at from.\n");
+			if(tables9[0]==0)
+			{
+				printf("(1)Endor Table \n");	
+			}
+			if(tables9[1]==0)
+			{
+				printf("(2)Naboo Table\n");
+			}
+			if(tables9[2]==0)
+			{
+				printf("(3)Tatooine Table\n");
+			}
+			printf(":");
+			int T;
+			scanf("%d",&T);
+			
+			switch(T)
+			{
+				case 1:
+					printf("Endor table has been booked for your party for 9pm\n");
+					tables9[0]==1;
+					break;
+				case 2:
+					printf("Naboo table has been booked for your party for 9pm\n");
+					tables9[1]==1;
+					
+					break;
+				case 3:
+					printf("Tatooine table has been booked for your party for 9pm\n");
+					tables9[2]==1;
+					break;
+				default:
+					printf("Error");
+			}
+		}
+	}
+}
 }
 
 void checkOut (){
