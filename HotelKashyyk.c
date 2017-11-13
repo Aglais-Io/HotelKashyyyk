@@ -55,6 +55,8 @@ FILE *fp2;
 void checkIn ();
 void dining ();
 void checkOut ();
+int bill();
+int calculateCost(int x);
 
 int main ()
 {
@@ -314,3 +316,78 @@ void dining (){
 void checkOut (){
 
 }
+
+int bill(//all the things)
+{
+    char checkoutID[//];
+    int initial, onePerson, totalChild, totalRoom, totalBoard, boardCost, totalCost, newspaperCost = 0;
+    int room1 = 100, room2 = 85, room3 = 75, room4 = 50;  
+    
+    printf("enter your bookingID");
+    gets(checkoutID);
+    
+    if(checkoutID //);
+    //error check bookingID
+    //get full name name from file
+
+                 
+    if (roomType == roomone){
+         initial = cost(room1);
+    }
+    else if(roomType == roomtwo){
+         initial = cost(room2);
+         }
+    else if(roomType == roomthree){
+         initial = cost(room3);
+         }
+    else if(roomType == roomfour){
+         initial = cost(room4);
+         }
+    else{
+         //error
+    }
+    
+    onePerson = initial / totalPeople;
+    if(children != 0 && over65s != 0){
+         totalChild = (onePerson * 0.5) * children)) + (onePerson * (totalPeople - children));
+         totalRoom = totalChild * 0.9; 
+    }
+    else if( != 0){
+         totalRoom = initial * 0.9;
+    }
+    else if(d != 0){
+         totalRoom = (onePerson * 0.5) * children)) + (onePerson * (totalPeople - 1));
+    }
+    else {
+         
+    }
+    if(boardtype = "full board"){
+         boardCost = cost(20)
+    } 
+    else if(boardtype = "boardtype"){
+         boardCost = cost(15)
+    }
+    else if(boardtype = "B&B"){
+         boardCost = cost(5)
+    }
+    totalBoard = lengthofstay * boardCost
+        
+    int totalCost;
+    totalBoard = lengthofstay * boardrate
+    totalCost = totalBoard + totalRoom
+    if(newpspaper != 0){
+         totalCost + 5.50; 
+         newspaperCost = 5.50   
+    }
+    
+    return totalCost
+    /*OUTPUT: full name, bookingID, total room cost, total board cost, newspaper cost (if x>0), overall total*/ 
+}
+
+int calculateCost(int x)
+{
+    int cost;
+    cost = lengthofstay * x
+    return cost
+}
+
