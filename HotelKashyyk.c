@@ -28,9 +28,9 @@ FILE *fp2;
 //Initalise functions
 void checkIn ();
 void dining ();
-void checkOut ();
-int bill();
-int calculateCost(int x);
+void bill();
+int calculateCost(x, lengthStay);
+void checkOut(ID);
 
 int main ()
 {
@@ -494,81 +494,102 @@ void dining (){
 }
 }
 
-void checkOut (){
-
-}
-
-int bill()
+void bill()
 {
+    //need length of the array?
     char checkoutID[//];
     int initial, onePerson, totalChild, totalRoom, totalBoard, boardCost, totalCost, newspaperCost = 0;
     int room1 = 100, room2 = 85, room3 = 75, room4 = 50;  
     
-    printf("enter your bookingID");
+    printf("Enter your bookingID: ");
     gets(checkoutID);
     
     if(checkoutID //);
-    //error check bookingID
-    //get full name name from file
-
-                 
-    if (roomType == roomone){
-         initial = cost(room1);
+    //ERROR CHECK BOOKING ID HERE 
+    
+    //get name, children, over65s, roomType, boardType, lengthStay, newspaper, totalPeople from file for ID
+    
+    // here i need the right strings of room names to calculate
+    // the initial cost of the rooms
+    
+    // calculating the initial room cost           
+    if (roomType == /*roomone*/){
+         initial = cost(room1,lengthStay);
     }
-    else if(roomType == roomtwo){
-         initial = cost(room2);
-         }
-    else if(roomType == roomthree){
-         initial = cost(room3);
-         }
-    else if(roomType == roomfour){
-         initial = cost(room4);
-         }
+    else if(roomType == /*roomtwo*/){
+         initial = cost(room2,lengthStay);
+    }
+    else if(roomType == /*roomthree*/){
+         initial = cost(room3,lengthStay);
+    }
+    else if(roomType == /*roomfour*/){
+         initial = cost(room4,lengthStay);
+    }
     else{
-         //error
+         //error??
     }
     
+    // calculating the final room cost, including discounts
     onePerson = initial / totalPeople;
     if(children != 0 && over65s != 0){
-         totalChild = (onePerson * 0.5) * children)) + (onePerson * (totalPeople - children));
+         totalChild = ((onePerson * 0.5) * children) + (onePerson * (totalPeople - children));
          totalRoom = totalChild * 0.9; 
     }
-    else if( != 0){
+    else if(over65s != 0 && children == 0){
          totalRoom = initial * 0.9;
     }
-    else if(d != 0){
+    else if(children != 0 && over65s == 0){
          totalRoom = (onePerson * 0.5) * children)) + (onePerson * (totalPeople - 1));
     }
     else {
-         
-    }
-    if(boardtype = "full board"){
-         boardCost = cost(20)
-    } 
-    else if(boardtype = "boardtype"){
-         boardCost = cost(15)
-    }
-    else if(boardtype = "B&B"){
-         boardCost = cost(5)
-    }
-    totalBoard = lengthofstay * boardCost
-        
-    int totalCost;
-    totalBoard = lengthofstay * boardrate
-    totalCost = totalBoard + totalRoom
-    if(newpspaper != 0){
-         totalCost + 5.50; 
-         newspaperCost = 5.50   
+         totalRoom = initial;
     }
     
-    return totalCost
-    /*OUTPUT: full name, bookingID, total room cost, total board cost, newspaper cost (if x>0), overall total*/ 
+    // calculating board type
+    if(boardType = "full board"){
+         boardCost = cost(20);
+    } 
+    else if(boardType = "boardtype"){
+         boardCost = cost(15);
+    }
+    else if(boardType = "B&B"){
+         boardCost = cost(5);
+    }
+    else
+    {
+        //error
+    }
+    
+    // calculting total board cost
+    totalBoard = lengthStay * boardCost;
+    // calculating total cost of stay
+    totalCost = totalBoard + totalRoom;
+    if(newpspaper != 0){
+         totalCost + 5.50; 
+         newspaperCost = 5.50;   
+    }
+    
+    //outputting the user's bill
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nYour name: %s\nYour booking ID: %s\nPrice of room: %d\nPrice of board: %d", name, checkoutID, totalRoom, totalBoard);
+    //only printing newspaper if the cost is not zero
+    if(newpspaperCost != 0){
+         printf("\nPrice of newspapers: %d", newspaperCost);
+    }
+    printf("\nOverall total: %d\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", totalCost);
+    checkOut(checkoutID);
+    /*OUTPUT: full name, bookingID, total room cost, total board cost, newspaper cost (if price>0), overall total*/ 
+    //return totalCost
 }
 
-int calculateCost(int x)
+void checkOut(checkoutID){
+     //retrieve all the relevant data correlating to the bookingID (e.g board type, room type, table bookings), but not name, id etc.
+     //set all the data to NULL
+}
+
+int calculateCost(x, lengthStay)
 {
     int cost;
-    cost = lengthofstay * x
-    return cost
+    cost = lengthStay * x;
+    return cost;
 }
 
