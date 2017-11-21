@@ -38,13 +38,6 @@ int main ()
 	return 0;
 }
 
-int main()
-{
-	srand(time(0));
-	checkIn();
-	return 0;
-}
-
 int checkIn ()
 {
 	//Structure to store guests
