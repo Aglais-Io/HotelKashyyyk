@@ -26,7 +26,7 @@ FILE *fp;
 FILE *fp2;
 
 //Initalise functions
-void checkIn ();
+int checkIn ();
 void dining ();
 void bill();
 int calculateCost(x, lengthStay);
@@ -38,7 +38,15 @@ int main ()
 	return 0;
 }
 
-void checkIn (){
+int main()
+{
+	srand(time(0));
+	checkIn();
+	return 0;
+}
+
+int checkIn ()
+{
 	//Structure to store guests
 	struct guests {
 		//UniqueID
@@ -48,7 +56,7 @@ void checkIn (){
 		char fName[25];
 		char sName[25];
 
-		//DOB (Store as dd/mm/yyyy
+		//DOB (Store as dd/mm/yyyy)
 		char DOB [10];
 
 		//Guest numbers
@@ -111,6 +119,7 @@ void checkIn (){
 	unsigned int numCh = 5;
 	char boardType [6];
 	int lenStay = -1;
+	char newspaper [4];
 
 	printf("Enter your 1st name: \n>> ");
 	fgets(guestStruct.fName, 25, stdin);
@@ -162,10 +171,10 @@ void checkIn (){
 	}
 
 	printf("Enter your day of birth: \n>> ");
-	fgets(guestStruct.DOB, 2, stdin);
+	fgets(guestStruct.DOB, 3, stdin);
 	fflush(stdin);
 	printf("\n");
-	/*
+
 	//Append a 0 to the end
 	if (guestStruct.DOB[1] == '\0')
 	{
@@ -176,34 +185,29 @@ void checkIn (){
 	i = 0;
 	while (i < 2)
 	{
-		if(guestStruct.DOB[i] > 47 || guestStruct.DOB[i] < 58)
+		for(int j = 0; j < 2; j++)
 		{
-			printf("The day you entered contained things other than digits\n");
+			puts(guestStruct.DOB);
+		}
+
+		if ((((guestStruct.DOB[0] == '3') && (guestStruct.DOB[1] == '0' && guestStruct.DOB[1] == '1')) || (guestStruct.DOB[0] == '0' || guestStruct.DOB[0] == '1' || guestStruct.DOB[0] == '2')) == false)
+		{
+			printf("The day you entered was too large or contained something that is not a digit\n");
 
 			printf("Enter your day of birth: \n>> ");
-			fgets(guestStruct.DOB, 2, stdin);
+			fgets(guestStruct.DOB, 3, stdin);
 			fflush(stdin);
 			printf("\n");
 			i = -1;
 		}
-
-	if ((((guestStruct.DOB[0] == '3') && (guestStruct.DOB[1] == '0' && guestStruct.DOB[1] == '1')) || (guestStruct.DOB[0] == '0' || guestStruct.DOB[0] == '1' || guestStruct.DOB[0] == '2')) == false)
-	{
-			printf("The day you entered was too large or contained something that is not a digit\n");
-
-			printf("Enter your day of birth: \n>> ");
-			fgets(guestStruct.DOB, 2, stdin);
-			fflush(stdin);
-			i = -1;
-		}
 		i++;
-	}*/
+	}
 
 	printf("Enter your month of birth: \n>> ");
-	fgets(monthStr, 2, stdin);
+	fgets(monthStr, 3, stdin);
 	fflush(stdin);
 	printf("\n");
-	/*
+
 	//Append a 0 to the end
 	if (monthStr[1] == '\0')
 	{
@@ -214,50 +218,41 @@ void checkIn (){
 	i = 0;
 	while (i < 2)
 	{
-		if(isdigit(monthStr[i]) == false)
-		{
-			printf("The month you entered contained things other than digits\n");
-
-			printf("Enter your month of birth: \n>> ");
-			fgets(monthStr, 2, stdin);
-			fflush(stdin);
-			printf("\n");
-			i = -1;
-		}
-
 		if((monthStr[0] == '0') || (monthStr[0] == '1' && (monthStr[1] == '0' || monthStr[1] == '1' || monthStr[1] == '2')))
 		{
-			printf("The month you entered was too large\n");
+			printf("The month you entered was too large or you didnot enter digits\n");
 
 			printf("Enter your month of birth: \n>> ");
-			fgets(monthStr, 2, stdin);
+			fgets(monthStr, 3, stdin);
 			fflush(stdin);
 			printf("\n");
 			i = -1;
 		}
 		i++;
 	}
-*/
+
 	strcat(guestStruct.DOB, monthStr);
 
 	printf("Enter your year of birth: \n>> ");
-	fgets(yearStr, 4, stdin);
+	fgets(yearStr, 5, stdin);
 	fflush(stdin);
 	printf("\n");
-/*
+
 	i = 0;
 	while (i < 4)
 	{
-		if(isdigit(yearStr[i]) == false)
+		if((yearStr[0] == '1' && yearStr[1] == '9') || (yearStr[0] == '2' && yearStr[1] == '0' && yearStr[2] == '0' && (yearStr[3] == '0' || yearStr[3] == '1')))
 		{
-			printf("Enter your day of birth: \n>> ");
-			fgets(yearStr, 4, stdin);
+			printf("The year you entered was too large or you did not enter digits\n");
+
+			printf("Enter your year of birth: \n>> ");
+			fgets(yearStr, 5, stdin);
 			fflush(stdin);
 			printf("\n");
 			i = -1;
 		}
 		i++;
-	}*/
+	}
 	strcat(guestStruct.DOB, yearStr);
 
 	printf("Enter the number of adults: \n>> ");
@@ -265,7 +260,7 @@ void checkIn (){
 	fflush(stdin);
 	printf("\n");
 
-	while (numAd > 5)
+	while (numAd >= 5)
 	{
 		printf("Too many adults entered");
 
@@ -282,9 +277,9 @@ void checkIn (){
 	fflush(stdin);
 	printf("\n");
 
-	while ((numAd + numCh) > 5)
+	while ((numAd + numCh) >= 5)
 	{
-		printf("Too many people entered");
+		printf("Too many people entered\n");
 
 		printf("Enter the number of children: \n>> ");
 		scanf("%d", &numCh);
@@ -310,12 +305,12 @@ void checkIn (){
 			guestStruct.bType = 0;
 		}
 
-		if (strcmp(boardType, "half") == notFalse)
+		else if (strcmp(boardType, "half") == notFalse)
 		{
 			guestStruct.bType = 1;
 		}
 
-		if (strcmp(boardType, "full") == notFalse)
+		else if (strcmp(boardType, "full") == notFalse)
 		{
 			guestStruct.bType = 2;
 		}
@@ -330,7 +325,7 @@ void checkIn (){
 	fflush(stdin);
 	printf("\n");
 
-	while (lenStay > 0)
+	while (lenStay < 0)
 	{
 		printf("Enter the length of the stay: \n>> ");
 		scanf("%d", &lenStay);
@@ -344,7 +339,7 @@ void checkIn (){
 	{
 		//Recycle board type as newspaper
 		printf("Would you like a newspaper?: \n>> ");
-		fgets(boardType, 5, stdin);
+		fgets(boardType, 4, stdin);
 		fflush(stdin);
 		printf("\n");
 
@@ -358,7 +353,7 @@ void checkIn (){
 			guestStruct.newspaper = true;
 		}
 
-		if (strcmp(boardType, "no") == notFalse)
+		else if (strcmp(boardType, "no") == notFalse)
 		{
 			guestStruct.newspaper = false;
 		}
@@ -379,11 +374,11 @@ void checkIn (){
 	fputs(guestStruct.fName, fp);
 	fputs(guestStruct.sName, fp);
 	fputs(guestStruct.DOB, fp);
-	fprintf(fp,"%d",guestStruct.adultNum);
-	fprintf(fp,"%d",guestStruct.childNum);
-	fprintf(fp,"%d", guestStruct.bType);
-	fprintf(fp,"%d",guestStruct.lenStay);
-	fprintf(fp,"%d",guestStruct.newspaper);
+	fprintf(fp,"\n%d",guestStruct.adultNum);
+	fprintf(fp,"\n%d",guestStruct.childNum);
+	fprintf(fp,"\n%d", guestStruct.bType);
+	fprintf(fp,"\n%d",guestStruct.lenStay);
+	fprintf(fp,"\n%d",guestStruct.newspaper);
 
 	fclose(fp);
 }
