@@ -691,7 +691,7 @@ int bill()
     fgetss(DofB, 10, fp);
     fscanf(fp,"%d",adultNum);
     fscanf(fp,"%d",children);
-    //get over65s variable
+    fscanf(fp,"%d",over65s);
     fscanf(fp,"%d",boardType);
     fscanf(fp,"%d",lengthStay);
     fscanf(fp,"%d",newspaper);
@@ -726,7 +726,7 @@ int bill()
     //if(checkoutID //); ~ NOT NEEDED    
     int locFree = -1;
     char UID [29];
-    for (int i = 0; i < 36; i++)
+    for (int i = 0; i < 44; i++)
 	{
 		//Temporary variable
 		char temp [29];
@@ -739,7 +739,7 @@ int bill()
 			if (strcmp(temp, checkoutID) == false)
 			{
 				//Store free location
-				locFree = (int) i / 9;
+				locFree = (int) i / 11;
 				strcat(UID, temp);
 				break;
 			}
@@ -833,7 +833,7 @@ void checkOut(checkoutID,int locFree){
 
 		}
 		
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 11; i++)
 		{
             fprintf(fp,"\0\n");
         }
