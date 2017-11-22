@@ -12,10 +12,13 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+//tables- 1 = in use, 0 = available
+int tables7[10];
+int tables9[10];
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.hint bill()
+#include <string.h>
+int bill()
 {
     
     /*problems i couldn't solve pls help:
@@ -217,8 +220,51 @@ void checkOut(ID);
 
 int main ()
 {
+	
+	//Endor = table 1
+	tables7[0]=0;
+	tables9[0]=0;
+	//Naboo = table 2
+	tables7[1]=0;
+	tables9[1]=0;
+	//Tatooine = table 3
+	tables7[2]=0;
+	tables9[2]=0;
+	
 	srand(time(0));
-	return 0;
+	
+	
+	int L=0;
+	while(L==0)
+	{
+		printf("\n--WELCOME TO KASHYYYK HOTEL--\n");
+		printf("----------MAIN MENU----------\n");
+		printf("You can choose from three different options:\n(1)Checking In\n(2)Table Booking\n(3)Check Out\nor (q) to quit\n");
+		char Opt[10];
+		scanf("%c",Opt);
+		if(Opt[0]=='1')
+		{
+			checkIn();
+		}
+		else if(Opt[0]=='2')
+		{
+			dining();
+		}
+		else if(Opt[0]=='3')
+		{
+			bill();
+			calculateCost(int x);
+		}
+		else if(Opt[0]=='q')
+		{
+			printf("Quiting");
+			L=1;
+		}
+		else
+		{
+		printf("\nError - invalid input\n");
+		}
+	}
 }
 
 int checkIn ()
@@ -559,110 +605,146 @@ int checkIn ()
 	fclose(fp);
 }
 
-void dining (){
-	
-	int ID[10];
-	printf("Input booking ID:");
-	scanf("%d",ID);
-	//CHECK FOR EXISTING USER
-	//IF EXISTING USER------
-	
-	
-	//tables- 1 = in use, 0 = available
-	int tables7[10];int tables9[10];
-	//Endor = table 1
-	tables7[0]=0;tables9[0]=0;
-	//Naboo = table 2
-	tables7[1]=0;tables9[1]=0;
-	//Tatooine = table 3
-	tables7[2]=0;tables9[2]=0;
-	int time;
-	printf("Would you like to book a table for 7pm or 9pm?\nInput 7 for 7pm\nInput 9 for 9pm\n");
-	scanf("%d",&time);
-	if(time==7)
+void dining ()
+{
+	int a=0;
+	while(a==0)
 	{
-		if((bType==1)||(bType==2)&&((tables7[0]==0)||(tables7[1]==0)||(tables7[2]==0)))
+		char ID[28];
+		printf("Input booking ID:");
+		scanf("%s",ID);
+		if((strlen(ID)>28)||(strlen(ID)<4))
 		{
-			printf("Please select a table to dine at from.\n");
-			if(tables7[0]==0)
-			{
-				printf("(1)Endor Table \n");	
-			}
-			if(tables7[1]==0)
-			{
-				printf("(2)Naboo Table\n");
-			}
-			if(tables7[2]==0)
-			{
-				printf("(3)Tatooine Table\n");
-			}
-			printf(":");
-			int T;
-			scanf("%d",&T);
-			
-			switch(T)
-			{
-				case 1:
-					printf("Endor table has been booked for your party for 7pm\n");
-					tables7[0]==1;
-					break;
-				case 2:
-					printf("Naboo table has been booked for your party for 7pm\n");
-					tables7[1]==1;
-					
-					break;
-				case 3:
-					printf("Tatooine table has been booked for your party for 7pm\n");
-					tables7[2]==1;
-					break;
-				default:
-					printf("Error");
-			}
+			printf("Error invalid input.\n");
+			printf("The max amount of characters is 28\nThe min amount of charcters is 4\n");
+		}
+		else
+		{
+			a=1;
 		}
 	}
-	else if(time==9)
+	int testtime=0;
+	char time[10];
+	while (testtime==0)
 	{
-		
-		if((bType==1)||(bType==2)&&((tables9[0]==0)||(tables9[1]==0)||(tables9[2]==0)))
+		printf("Would you like to book a table for 7pm or 9pm?\nInput 7 for 7pm\nInput 9 for 9pm\n");
+		scanf("%s",time);
+		if(time[0]=='7')
 		{
-			printf("Please select a table to dine at from.\n");
-			if(tables9[0]==0)
+			if(((bType==1)||(bType==2))&&((tables7[0]==0)||(tables7[1]==0)||(tables7[2]==0)))
 			{
-				printf("(1)Endor Table \n");	
-			}
-			if(tables9[1]==0)
-			{
-				printf("(2)Naboo Table\n");
-			}
-			if(tables9[2]==0)
-			{
-				printf("(3)Tatooine Table\n");
-			}
-			printf(":");
-			int T;
-			scanf("%d",&T);
-			
-			switch(T)
-			{
-				case 1:
-					printf("Endor table has been booked for your party for 9pm\n");
-					tables9[0]==1;
-					break;
-				case 2:
-					printf("Naboo table has been booked for your party for 9pm\n");
-					tables9[1]==1;
+				
+				int c=0;
+				while(c==0)
+				{
+					printf("Please select a table to dine at.\n");	
+					if(tables7[0]==0)
+					{
+						printf("(1)Endor Table \n");
+					}
+					if(tables7[1]==0)
+					{
+						printf("(2)Naboo Table\n");
+					}
+					if(tables7[2]==0)
+					{
+						printf("(3)Tatooine Table\n");
+					}
+					char T[10];
+					scanf("%s",T);
 					
-					break;
-				case 3:
-					printf("Tatooine table has been booked for your party for 9pm\n");
-					tables9[2]==1;
-					break;
-				default:
-					printf("Error");
+					if(T[0]=='1')
+					{
+						printf("Endor table has been booked for your party for 7pm\n");
+						tables7[0]=1;
+						c=1;
+					}
+					else if(T[0]=='2')
+					{
+						printf("Naboo table has been booked for your party for 7pm\n");
+						tables7[1]=1;
+						c=1;
+					}
+					else if(T[0]=='3')
+					{
+						printf("Tatooine table has been booked for your party for 7pm\n");
+						tables7[2]=1;
+						c=1;
+					}
+					else
+					{
+						printf("Error, invalid input. Please try again.");
+						c=0;
+					}
+				}
+			}
+			else
+			{
+				printf("\nThere are no tables available for booking at this time.\n");
+				testtime=0;
 			}
 		}
+		else if(time[0]=='9')
+		{
+			
+			if((bType==1)||(bType==2)&&((tables9[0]==0)||(tables9[1]==0)||(tables9[2]==0)))
+			{
+				int c=0;
+				while (c==0)
+				{
+					printf("Please select a table to dine at from.\n");
+					if(tables9[0]==0)
+					{
+						printf("(1)Endor Table \n");	
+					}
+					if(tables9[1]==0)
+					{
+						printf("(2)Naboo Table\n");
+					}
+					if(tables9[2]==0)
+					{
+						printf("(3)Tatooine Table\n");
+					}
+					char T[10];
+					scanf("%s",T);
+					
+					if(T[0]=='1')
+					{
+						printf("Endor table has been booked for your party for 9pm\n");
+						tables9[0]=1;
+						c=1;
+					}
+					else if(T[0]=='2')
+					{
+						printf("Naboo table has been booked for your party for 9pm\n");
+						tables9[1]=1;
+						c=1;
+					}
+					else if(T[0]=='3')
+					{
+						printf("Tatooine table has been booked for your party for 9pm\n");
+						tables9[2]=1;
+						c=1;
+					}
+					else
+					{
+						printf("Error, invalid input. Please try again.");
+						c=0;
+					}
+				}
+			}
+			else
+			{
+				printf("\nThere are no tables available for booking at this time.\n");
+				testtime=0;
+			}
+		}
+		else
+		{
+			printf("You have not entered a valid time to dine. Please try again.\n");
+			testtime=0;
+		}
 	}
-}
 }
 
 int bill()
