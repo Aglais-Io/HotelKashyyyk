@@ -15,6 +15,189 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.hint bill()
+{
+    
+    /*problems i couldn't solve pls help:
+           - over65s variable
+           - room that the people are staying in
+           - is newspapers one off or asked every day etc.
+           - find strings for board type (DONE :D)
+           - find strings for room type*/
+           
+           
+    //need length of the array?
+    char checkoutID[//];
+    int firstname, surname, children, adultNum, over65s, DofB, initial, onePerson, totalChild, totalRoom;
+    int totalBoard, boardCost, totalCost, newspaperCost = 0, boardType, lengthStay, totalPeople;
+    int room1 = 100, room2 = 85, room3 = 75, room4 = 50;  
+    
+    //get (firstname, surname, DofB children, over65s, roomType, boardType, lengthStay, newspaper, adultNum,totalPeople from file for ID)
+    //gets all needed info from file 
+    fgets(firstame, 25, fp);
+    fgets(surname, 25, fp);
+    fgetss(DofB, 10, fp);
+    fscanf(fp,"%d",adultNum);
+    fscanf(fp,"%d",children);
+    fscanf(fp,"%d",boardType);
+    fscanf(fp,"%d",lengthStay);
+    fscanf(fp,"%d",newspaper);
+    
+    //setting up variables
+    totalPeople = children + adultNum + over65s
+    
+    //finding amount of over 65s
+    /*how to find DofB for each person?
+    for(int i = 0, i < totalPeople, i++){
+            if(DofB[6] == 1 && DofB[7] == 9 && DofB[8] <= 5){
+                       if(DofB[8] == 5 && DofB[9] <= 2){
+                            over65s++
+                       }
+                       else if(DofB[8] < 5 && DofB[9] < 10){
+                            //over65
+                       }
+                       else{
+                            //not over65  
+                       }
+            }
+            else {
+                 //not over65
+            }
+    } */
+    
+    printf("Enter your bookingID: ");
+    gets(checkoutID);
+    
+    if(checkoutID //);
+    //ERROR CHECK BOOKING ID HERE 
+    fp = fopen("guest.txt","w");
+    
+    int locFree = -1;
+    char UID [29];
+    for (int i = 0; i < 36; i++)
+	{
+		//Temporary variable
+		char temp [29];
+
+		fgets(temp, 29, fp);
+
+		if(i % 9 == 0)
+		{
+			//Compare against null
+			if (strcmp(temp, checkoutID) == false)
+			{
+				//Store free location
+				locFree = (int) i / 9;
+				strcat(UID, temp);
+				break;
+			}
+		}
+	}
+	
+	if(locFree == -1){
+        printf("Booking ID not valid");
+        return 0;
+    
+    // **here i need the right strings of room names to calculate**
+    // the initial cost of the rooms
+    
+    // calculating the ***initial*** room cost           
+    if (roomType == /*roomone*/){
+         initial = cost(room1,lengthStay);
+    }
+    else if(roomType == /*roomtwo*/){
+         initial = cost(room2,lengthStay);
+    }
+    else if(roomType == /*roomthree*/){
+         initial = cost(room3,lengthStay);
+    }
+    else if(roomType == /*roomfour*/){
+         initial = cost(room4,lengthStay);
+    }
+    else{
+         //error??
+    }
+    
+    // calculating the final room cost, including seperate discounts for children/over65s
+    onePerson = initial / totalPeople;
+    if(children != 0 && over65s != 0){
+         totalChild = ((onePerson * 0.5) * children) + (onePerson * (totalPeople - children));
+         totalRoom = totalChild * 0.9; 
+    }
+    else if(over65s != 0 && children == 0){
+         totalRoom = initial * 0.9;
+    }
+    else if(children != 0 && over65s == 0){
+         totalRoom = (onePerson * 0.5) * children)) + (onePerson * (totalPeople - 1));
+    }
+    else {
+         totalRoom = initial;
+    }
+    
+    // calculating board type
+    if(boardType = "full"){
+         boardCost = cost(20);
+    } 
+    else if(boardType = "half"){
+         boardCost = cost(15);
+    }
+    else if(boardType = "b&b" || boardType = "bandb" ){
+         boardCost = cost(5); 
+    }
+    else
+    {
+        //error
+    }
+    
+    // calculting total board cost
+    totalBoard = lengthStay * boardCost;
+    // calculating total cost of stay
+    totalCost = totalBoard + totalRoom;
+    if(newpspaper != 0){
+         totalCost + 5.50; 
+         newspaperCost = 5.50;   
+    }
+    
+    //outputting the user's bill
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nYour name: %s\nYour booking ID: %s\nPrice of room: %d\nPrice of board: %d", name, checkoutID, totalRoom, totalBoard);
+    //only printing newspaper if the cost is not zero
+    if(newpspaperCost != 0){
+         printf("\nPrice of newspapers: %d", newspaperCost);
+    }
+    printf("\nOverall total: %d\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", totalCost);
+    checkOut(checkoutID, locFree);
+    /*OUTPUT: full name, bookingID, total room cost, total board cost, newspaper cost (if price>0), overall total*/ 
+    //return totalCost
+}
+
+void checkOut(checkoutID,int locFree){
+        char UID [29];
+        for (int i = 0; i < locFree; i++)
+	    {
+	    	//Temporary variable
+	     	char temp [29];
+
+	      	fgets(temp, 29, fp);
+
+		}
+		
+		for (int i = 0; i < 9; i++)
+		{
+            fprintf(fp,"\0\n")
+            }
+	}
+	
+	
+     
+     //set all the data to NULL
+}
+
+int calculateCost(x, lengthStay)
+{
+    int cost;
+    cost = lengthStay * x;
+    return cost;
+}>
 #include <time.h>
 
 #define true 1
@@ -482,25 +665,93 @@ void dining (){
 }
 }
 
-void bill()
+int bill()
 {
+    
+    /*problems i couldn't solve pls help:
+           - over65s variable
+           - room that the people are staying in
+           - is newspapers one off or asked every day etc.
+           - find strings for board type (DONE :D)
+           - find strings for room type*/
+           
+           
     //need length of the array?
     char checkoutID[//];
-    int initial, onePerson, totalChild, totalRoom, totalBoard, boardCost, totalCost, newspaperCost = 0;
+    int firstname, surname, children, adultNum, over65s, DofB, initial, onePerson, totalChild, totalRoom;
+    int totalBoard, boardCost, totalCost, newspaperCost = 0, boardType, lengthStay, totalPeople;
     int room1 = 100, room2 = 85, room3 = 75, room4 = 50;  
+    
+    //get (firstname, surname, DofB children, over65s, roomType, boardType, lengthStay, newspaper, adultNum,totalPeople from file for ID)
+    //gets all needed info from file 
+    fgets(firstame, 25, fp);
+    fgets(surname, 25, fp);
+    fgetss(DofB, 10, fp);
+    fscanf(fp,"%d",adultNum);
+    fscanf(fp,"%d",children);
+    fscanf(fp,"%d",boardType);
+    fscanf(fp,"%d",lengthStay);
+    fscanf(fp,"%d",newspaper);
+    
+    //setting up variables
+    totalPeople = children + adultNum + over65s
+    
+    //finding amount of over 65s
+    /*how to find DofB for each person?
+    for(int i = 0, i < totalPeople, i++){
+            if(DofB[6] == 1 && DofB[7] == 9 && DofB[8] <= 5){
+                       if(DofB[8] == 5 && DofB[9] <= 2){
+                            over65s++
+                       }
+                       else if(DofB[8] < 5 && DofB[9] < 10){
+                            //over65
+                       }
+                       else{
+                            //not over65  
+                       }
+            }
+            else {
+                 //not over65
+            }
+    } */
     
     printf("Enter your bookingID: ");
     gets(checkoutID);
     
     if(checkoutID //);
     //ERROR CHECK BOOKING ID HERE 
+    fp = fopen("guest.txt","w");
     
-    //get name, children, over65s, roomType, boardType, lengthStay, newspaper, totalPeople from file for ID
+    int locFree = -1;
+    char UID [29];
+    for (int i = 0; i < 36; i++)
+	{
+		//Temporary variable
+		char temp [29];
+
+		fgets(temp, 29, fp);
+
+		if(i % 9 == 0)
+		{
+			//Compare against null
+			if (strcmp(temp, checkoutID) == false)
+			{
+				//Store free location
+				locFree = (int) i / 9;
+				strcat(UID, temp);
+				break;
+			}
+		}
+	}
+	
+	if(locFree == -1){
+        printf("Booking ID not valid");
+        return 0;
     
-    // here i need the right strings of room names to calculate
+    // **here i need the right strings of room names to calculate**
     // the initial cost of the rooms
     
-    // calculating the initial room cost           
+    // calculating the ***initial*** room cost           
     if (roomType == /*roomone*/){
          initial = cost(room1,lengthStay);
     }
@@ -517,7 +768,7 @@ void bill()
          //error??
     }
     
-    // calculating the final room cost, including discounts
+    // calculating the final room cost, including seperate discounts for children/over65s
     onePerson = initial / totalPeople;
     if(children != 0 && over65s != 0){
          totalChild = ((onePerson * 0.5) * children) + (onePerson * (totalPeople - children));
@@ -534,14 +785,14 @@ void bill()
     }
     
     // calculating board type
-    if(boardType = "full board"){
+    if(boardType = "full"){
          boardCost = cost(20);
     } 
-    else if(boardType = "boardtype"){
+    else if(boardType = "half"){
          boardCost = cost(15);
     }
-    else if(boardType = "B&B"){
-         boardCost = cost(5);
+    else if(boardType = "b&b" || boardType = "bandb" ){
+         boardCost = cost(5); 
     }
     else
     {
@@ -564,13 +815,30 @@ void bill()
          printf("\nPrice of newspapers: %d", newspaperCost);
     }
     printf("\nOverall total: %d\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", totalCost);
-    checkOut(checkoutID);
+    checkOut(checkoutID, locFree);
     /*OUTPUT: full name, bookingID, total room cost, total board cost, newspaper cost (if price>0), overall total*/ 
     //return totalCost
 }
 
-void checkOut(checkoutID){
-     //retrieve all the relevant data correlating to the bookingID (e.g board type, room type, table bookings), but not name, id etc.
+void checkOut(checkoutID,int locFree){
+        char UID [29];
+        for (int i = 0; i < locFree; i++)
+	    {
+	    	//Temporary variable
+	     	char temp [29];
+
+	      	fgets(temp, 29, fp);
+
+		}
+		
+		for (int i = 0; i < 9; i++)
+		{
+            fprintf(fp,"\0\n")
+            }
+	}
+	
+	
+     
      //set all the data to NULL
 }
 
@@ -580,4 +848,3 @@ int calculateCost(x, lengthStay)
     cost = lengthStay * x;
     return cost;
 }
-
