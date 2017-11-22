@@ -667,37 +667,41 @@ void dining (){
 
 int bill()
 {
-    
     /*problems i couldn't solve pls help:
            - over65s variable
            - room that the people are staying in
-           - is newspapers one off or asked every day etc.
-           - find strings for board type (DONE :D)
-           - find strings for room type*/
-           
-           
-    //need length of the array?
-    char checkoutID[//];
-    int firstname, surname, children, adultNum, over65s, DofB, initial, onePerson, totalChild, totalRoom;
+           - find strings for room type
+    */
+             
+    //defining arrays 
+    char checkoutID[29];
+    int firstname[25], surname[25], DofB[10];
+    //defining variables
+    int children, adultNum, over65s, initial, onePerson, totalChild, totalRoom;
     int totalBoard, boardCost, totalCost, newspaperCost = 0, boardType, lengthStay, totalPeople;
     int room1 = 100, room2 = 85, room3 = 75, room4 = 50;  
     
-    //get (firstname, surname, DofB children, over65s, roomType, boardType, lengthStay, newspaper, adultNum,totalPeople from file for ID)
+    //open file
+    fp = fopen("guest.txt","w");
+    
+    //get over65s, roomType
     //gets all needed info from file 
     fgets(firstame, 25, fp);
     fgets(surname, 25, fp);
     fgetss(DofB, 10, fp);
     fscanf(fp,"%d",adultNum);
     fscanf(fp,"%d",children);
+    //get over65s variable
     fscanf(fp,"%d",boardType);
     fscanf(fp,"%d",lengthStay);
     fscanf(fp,"%d",newspaper);
+    fscanf(fp,"%d",roomType);
     
-    //setting up variables
-    totalPeople = children + adultNum + over65s
+    //setting up any needed variables
+    totalPeople = children + adultNum + over65s;
     
     //finding amount of over 65s
-    /*how to find DofB for each person?
+    /*needed DofB for each person for this to work?
     for(int i = 0, i < totalPeople, i++){
             if(DofB[6] == 1 && DofB[7] == 9 && DofB[8] <= 5){
                        if(DofB[8] == 5 && DofB[9] <= 2){
@@ -715,13 +719,11 @@ int bill()
             }
     } */
     
+    //getting the user to input their booking ID
     printf("Enter your bookingID: ");
     gets(checkoutID);
     
-    if(checkoutID //);
-    //ERROR CHECK BOOKING ID HERE 
-    fp = fopen("guest.txt","w");
-    
+    //if(checkoutID //); ~ NOT NEEDED    
     int locFree = -1;
     char UID [29];
     for (int i = 0; i < 36; i++)
@@ -748,7 +750,7 @@ int bill()
         printf("Booking ID not valid");
         return 0;
     
-    // **here i need the right strings of room names to calculate**
+    // **FIND RIGHT STRINGS FOR COMPARISON TO ROOM TYPE**
     // the initial cost of the rooms
     
     // calculating the ***initial*** room cost           
@@ -785,13 +787,13 @@ int bill()
     }
     
     // calculating board type
-    if(boardType = "full"){
+    if(boardType == "full"){
          boardCost = cost(20);
     } 
     else if(boardType = "half"){
          boardCost = cost(15);
     }
-    else if(boardType = "b&b" || boardType = "bandb" ){
+    else if(boardType == "b&b" || boardType == "bandb" ){
          boardCost = cost(5); 
     }
     else
@@ -809,15 +811,15 @@ int bill()
     }
     
     //outputting the user's bill
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nYour name: %s\nYour booking ID: %s\nPrice of room: %d\nPrice of board: %d", name, checkoutID, totalRoom, totalBoard);
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nYour name: %s %s\nYour booking ID: %s\nPrice of room: %d$\nPrice of board: %d$", firstname, surname, checkoutID, totalRoom, totalBoard);
     //only printing newspaper if the cost is not zero
     if(newpspaperCost != 0){
-         printf("\nPrice of newspapers: %d", newspaperCost);
+         printf("\nPrice of newspapers: %d$", newspaperCost);
     }
-    printf("\nOverall total: %d\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", totalCost);
+    //finishing printing the bill
+    printf("\nOverall total: %d$\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", totalCost);
     checkOut(checkoutID, locFree);
-    /*OUTPUT: full name, bookingID, total room cost, total board cost, newspaper cost (if price>0), overall total*/ 
-    //return totalCost
+    //return totalCost?
 }
 
 void checkOut(checkoutID,int locFree){
@@ -831,15 +833,11 @@ void checkOut(checkoutID,int locFree){
 
 		}
 		
-		for (int i = 0; i < 9; i++)
+		for (int i = 0; i < 10; i++)
 		{
-            fprintf(fp,"\0\n")
-            }
+            fprintf(fp,"\0\n");
+        }
 	}
-	
-	
-     
-     //set all the data to NULL
 }
 
 int calculateCost(x, lengthStay)
@@ -848,3 +846,4 @@ int calculateCost(x, lengthStay)
     cost = lengthStay * x;
     return cost;
 }
+
